@@ -12,16 +12,18 @@ class CharactersCubit extends Cubit<CharactersState> {
   List<Character>? characters;
   List<Character>? loadedCharacters;
 
-  void getAllCharcters(){
-    charactersRepository.getAllCharacters().then((characters)  {
+  void getAllCharcters() {
+    charactersRepository.getAllCharacters().then((characters) {
       emit(CharactersLoaded(characters));
       this.characters = characters;
     });
   }
 
-  void getCharacterQuotes(String name, String status,
-      String species, String type, String gender){
-    charactersRepository.getCharacterQuotes(name, status, species, type, gender).then((loadedCharacters)  {
+  void getCharacterQuotes(
+      String name, String status, String species, String type, String gender) {
+    charactersRepository
+        .getCharacterQuotes(name, status, species, type, gender)
+        .then((loadedCharacters) {
       emit(CharacterQuotesLoaded(loadedCharacters));
     });
   }
